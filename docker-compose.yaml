@@ -1,0 +1,73 @@
+version: "3.7"
+
+volumes:
+  elasticsearch-volume:
+    driver: local
+  log-volume:
+    driver: local
+
+services:
+  elkdemo:
+    container_name: elkdemo
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - LOG_PATH=/var/log/elk
+    volumes:
+      - log-volume:/var/log/
+    depends_on:
+      - kibana
+      - elasticsearch
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.0
+    container_name: elasticsearch
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      # Use single node discovery in order to disable production mode and avoid bootstrap checks
+      # see https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
+      discovery.type: single-node
+    ports:
+      - "9200:9200"
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.17.0
+    container_name: logstash
+    ports:
+      - "5000:5000"
+      - "5044:5044"
+      - "9600:9600"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+      xpack.monitoring.enabled: "true"
+    restart: unless-stopped
+    depends_on:
+      - elasticsearch
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.17.0
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:7.17.0
+    user: root
+    container_name: filebeat
+    command: filebeat -e -strict.perms=false
+    environment:
+      - setup.kibana.host=kibana:5601
+      - LOG_PATH=/var/log/elk/elk
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - ELASTICSEARCH_USERNAME=${ELASTICSEARCH_USERNAME:-elastic}
+      - ELASTICSEARCH_PASSWORD=${ELASTICSEARCH_PASSWORD:-changeme}
+    volumes:
+      - log-volume:/var/log/elk
+      - ./filebeat.yml:/usr/share/filebeat/filebeat.yml
+      - /var/lib/docker:/var/lib/docker:ro
+      - /var/run/docker.sock:/var/run/docker.sock

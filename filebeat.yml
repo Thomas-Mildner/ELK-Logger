@@ -1,0 +1,24 @@
+filebeat.inputs:
+  - type: filestream
+    enabled: true
+    paths:
+      - ${LOG_PATH}/*.json
+  - type: container
+    paths:
+      - /var/lib/docker/containers/dddd44012ddb6685fea2b9ab85bbf982bb9ab025b86e58c1cefb54ed7fcdecf6/dddd44012ddb6685fea2b9ab85bbf982bb9ab025b86e58c1cefb54ed7fcdecf6.log
+
+processors:
+  - timestamp:
+      field: json.timeMillis
+      layouts:
+        - UNIX_MS
+        - UNIX
+      test:
+        - 1589117576765
+
+output.elasticsearch:
+  enabled: true
+  hosts: '${ELASTICSEARCH_HOSTS}'
+  indices:
+    - index: "filebeat-%{+yyyy.MM.dd}"
+
