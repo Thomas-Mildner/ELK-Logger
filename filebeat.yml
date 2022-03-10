@@ -3,9 +3,11 @@ filebeat.inputs:
     enabled: true
     paths:
       - ${LOG_PATH}/*.json
-  - type: container
-    paths:
-      - /var/lib/docker/containers/dddd44012ddb6685fea2b9ab85bbf982bb9ab025b86e58c1cefb54ed7fcdecf6/dddd44012ddb6685fea2b9ab85bbf982bb9ab025b86e58c1cefb54ed7fcdecf6.log
+    json.keys_under_root: true
+    json.message_key: message
+    json.overwrite_keys: true
+    json.add_error_key: true
+    json.expand_keys: true
 
 processors:
   - timestamp:

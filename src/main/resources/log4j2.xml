@@ -7,7 +7,7 @@
     </Properties>
     <Appenders>
         <File name="ElkLoggingFile" fileName="${env:LOG_PATH}/elk.json">
-            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <JSONLayout compact="true" eventEol="true" properties="true"/>
         </File>
         <Async name="AsyncFileAppender">
             <AppenderRef ref="ElkLoggingFile"/>
