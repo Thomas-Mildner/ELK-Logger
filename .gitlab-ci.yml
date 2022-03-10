@@ -1,12 +1,8 @@
-stages:          # List of stages for jobs, and their order of execution
-  - build
-  - test
-  - deploy
+services:
+  - docker:dind
 
-build-job:       # This job runs in the build stage, which runs first.
+docker_build:
   stage: build
+  image: docker:latest
   script:
-    - echo "Compiling the code..."    
     - docker build -t elkdemo:latest .
-    
-
