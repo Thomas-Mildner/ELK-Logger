@@ -1,0 +1,8 @@
+services:
+  - docker:dind
+
+docker_build:
+  stage: build
+  image: docker:latest
+  script:
+    - docker build -t elkdemo:latest .
