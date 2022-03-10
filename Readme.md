@@ -14,6 +14,10 @@ BuildStatus: [![pipeline status](https://gitlab.com/jonny990421-studium/VV/elklo
 - Docker
 - Docker Compose
 
+## Docker Image
+A prebuild image is located at:
+``` docker pull registry.gitlab.com/jonny990421-studium/vv/elklogger/elkdemo:latest```
+
 
 ## Using
 1. Run ```docker-compose up -d```. This will build the example-application and start filebeat, elasticsearch.
