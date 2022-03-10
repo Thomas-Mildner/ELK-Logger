@@ -2,7 +2,7 @@
 
 BuildStatus: [![pipeline status](https://gitlab.com/jonny990421-studium/VV/elklogger/badges/master/pipeline.svg)](https://gitlab.com/jonny990421-studium/VV/elklogger/-/commits/master)
 
-##Description
+## Description
 - Logging Java-SpringBoot-Application with log4j 
 - Configuration over external log4j2.xml in src/resources
 - Log JSON to filesystem mounted as Volume in Docker-Compose
