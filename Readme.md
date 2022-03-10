@@ -14,12 +14,18 @@
 - Docker
 - Docker Compose
 
-## Docker Image
+## Build it on your own
+1. Run ```docker-compose up -d```. This will build the example-application and start filebeat, elasticsearch.
+2. Call ```http://localhost:8080/helloWorld``` Endpoint to generate log entries.
+3. Call ```http://localhost:5601``` with your browser.
+4. Add index "filebeat-*" in Kibana.
+5. Visualize LogFiles in Kibana.
+
+## Using PreBuild Image
+
 A prebuild image is located at:
 ```docker pull vvthromildner/java-elk-logger:latest```
 
-
-## Using
 1. Run ```docker-compose -f docker-compose-prod.yml up -d```. This will build the example-application and start filebeat, elasticsearch.
 2. Call ```http://localhost:8080/helloWorld``` Endpoint to generate log entries.
 3. Call ```http://localhost:5601``` with your browser.
