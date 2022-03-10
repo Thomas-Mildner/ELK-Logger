@@ -17,11 +17,12 @@ BuildStatus: [![pipeline status](https://gitlab.com/jonny990421-studium/VV/elklo
 
 ## Using
 1. Run ```docker-compose up -d```. This will build the example-application and start filebeat, elasticsearch.
-2. Call ```http://localhost:8080/helloWorld``` Endpoint to generate log entries
+2. Call ```http://localhost:8080/helloWorld``` Endpoint to generate log entries.
 3. Call ```http://localhost:5601``` with your browser.
-4. Add index "filebeat-*" in Kibana
-5. Visualize LogFiles in Kibana
+4. Add index "filebeat-*" in Kibana.
+5. Visualize LogFiles in Kibana.
 
 ## Kibana
 http://localhost:5601/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-5m,to:now))&_a=(columns:!(),filters:!(),index:'92825bc0-a04f-11ec-98f8-ab7971fbdb04',interval:auto,query:(language:kuery,query:%22INFO%22),sort:!(!('@timestamp',desc)))
+
 ![kibana-screenshot](images/kibana-screenshot.png)
