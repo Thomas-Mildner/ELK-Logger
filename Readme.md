@@ -1,6 +1,6 @@
 # ELK Log4J Logger
 
-BuildStatus: ![example workflow](https://github.com/Thomas-Mildner/ELK-Logger/actions/workflows/docker-image/badge.svg)
+BuildStatus: ![example workflow](https://github.com/Thomas-Mildner/ELK-Logger/actions/workflows/docker-image.yml/badge.svg)
 
 ## Description
 - Logging Java-SpringBoot-Application with log4j 
