@@ -1,5 +1,5 @@
 FROM gradle:7-jdk-alpine AS build
-MAINTAINER Thomas Mildner
+LABEL maintainer="Thomas Mildner"
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
 RUN gradle build --no-daemon
