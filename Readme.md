@@ -1,6 +1,6 @@
 # ELK Log4J Logger
 
-BuildStatus: [![pipeline status](https://gitlab.com/jonny990421-studium/VV/elklogger/badges/master/pipeline.svg)](https://gitlab.com/jonny990421-studium/VV/elklogger/-/commits/master)
+BuildStatus: ![example workflow](https://github.com/Thomas-Mildner/ELK-Logger/actions/workflows/docker-image/badge.svg)
 
 ## Description
 - Logging Java-SpringBoot-Application with log4j 
@@ -16,7 +16,7 @@ BuildStatus: [![pipeline status](https://gitlab.com/jonny990421-studium/VV/elklo
 
 ## Docker Image
 A prebuild image is located at:
-``` docker pull registry.gitlab.com/jonny990421-studium/vv/elklogger/elkdemo:latest```
+```docker pull vvthromildner/java-elk-logger:latest```
 
 
 ## Using
