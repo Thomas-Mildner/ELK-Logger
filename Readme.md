@@ -40,3 +40,4 @@ A prebuild image is located at:
 http://localhost:5601/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-5m,to:now))&_a=(columns:!(),filters:!(),index:'92825bc0-a04f-11ec-98f8-ab7971fbdb04',interval:auto,query:(language:kuery,query:%22INFO%22),sort:!(!('@timestamp',desc)))
 
 ![kibana-screenshot](images/kibana-screenshot.png)
+
