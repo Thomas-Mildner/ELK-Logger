@@ -10,6 +10,7 @@
 - Read logs with filebeat from mounted Volume
 - Push logs to started elasticsearch 
 - Visualize the logfiles with kibana
+- **ELK Stack Version: 8.16.1** (Elasticsearch, Logstash, Kibana, Filebeat)
 
 ## Requirements
 
